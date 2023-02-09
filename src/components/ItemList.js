@@ -1,45 +1,51 @@
-import { useEffect, useState } from 'react';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Items from './Item';
+import produtos from './Produtos';
 import Spinner from './Spinner';
 
 
 const ItemList = () => {
+    
     const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]) ;   
+    const [data, setData] = useState([]);
 
     function getData(isSuccess = true){
-        return new Promise((resolve, reject) => {
-            setTimeout(
-                () => {
-                    if(isSuccess){
-                        resolve(produtos);
-                    }
-                    reject('Deu erro')
-                }, 3000
-            )
-        })
+      return new Promise((resolve, reject) => {
+        setTimeout(
+          () => {
+            if(isSuccess){
+              resolve(produtos)
+            }
+            reject('Problemas no BD')
+
+          }, 2000
+        )
+      })
     }
     
     useEffect(() => {
-        getData()
-            .then(retorno => {
-                setData(retorno);
-            })
-    },[]);
-    
-    const produtos = [
-            {id: 1, title: 'Camisa branca', price: 79},
-            
-            
-        ]
+      getData()
+        .then(retorno => {
+          setData(retorno);
+          setIsLoading(false);
+        }
+
+        )
+    }, [])
+
     if(isLoading){
-        return <Spinner />
+      return <Spinner />
     }
-  
+    
     return (
-    <div className='flex flex-col items-center justify-center mt-10'>
-        {data.map(d => <h1>{d.title}</h1>)}
-        {data.map(d => <p>{d.price}</p>)} 
+    <div className='flex items-center justify-between grid grid-cols-2 space-x-4 px-2 md:grid-cols-3 lg:grid-cols-4 md:px-10'>
+      {produtos.map(produtos => (
+        <Items
+          image={produtos.image} 
+          title={produtos.title}
+          price={produtos.price}
+        />  
+      ))}          
     </div>
   )
 }

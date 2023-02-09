@@ -7,7 +7,7 @@ const Items = (props) => {
         <div className='p-0 bg-white mt-10'>
           {/* Image */}
           <div>
-            <img src={props.image} alt='logo' className='h-60 rounded-xl'/>
+            <img src={camisaBranca} alt='logo' className='h-60 rounded-xl'/>
           </div>
           {/*Title */}
           <div>
