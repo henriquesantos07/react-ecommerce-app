@@ -1,15 +1,28 @@
-import NavBar from "./components/NavBar";
-import ItemListContainer from "./components/ItemListContainer";
+import NavBar from "./components/Navbar/NavBar";
+import ItemList from "./components/ItemList"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Promocao from "./pages/Promocao"
+import Homem from "./pages/Homem";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 
 
 
 function App() {
  return (
-   <div className="App">
-     <NavBar /> 
-     <ItemListContainer />
-   </div>
+  <>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<ItemList />} />
+          <Route exact path="/homem" element={<Homem />} />
+          <Route exact path="/mulher" element={<ItemDetailContainer />} />
+          <Route exact path="promocao" element={<Promocao />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  </>
  );
 }
 

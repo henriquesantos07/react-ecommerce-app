@@ -4,7 +4,7 @@ import camisaBranca from '../assets/camisaBranca.png';
 const Items = (props) => {
   return (
     <div className='flex justify-center'>
-        <div className='p-0 bg-white mt-10'>
+        <div key={props.id} className='p-0 bg-white mt-10'>
           {/* Image */}
           <div>
             <img src={camisaBranca} alt='logo' className='h-60 rounded-xl'/>
