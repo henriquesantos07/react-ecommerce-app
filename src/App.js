@@ -17,7 +17,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/homem" element={<ItemDetailContainer />} />
+          <Route exact path="/homem" element={<Homem />} />
           <Route exact path="/homem/:id" element={<ItemDetailContainer />} />
         </Routes>
       </div>
