@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import Items from './Item';
-import produtos from './Produtos';
-import Spinner from './Spinner';
+import React, { useState, useEffect } from 'react'
+import ItemDetail from './ItemDetail'
+import produtos from './Produtos'
+import { Link } from 'react-router-dom'
+import Spinner from '../Spinner'
 
-
-const ItemList = () => {
-    
-    const [isLoading, setIsLoading] = useState(true);
+const ItemDetailContainer = () => {
+  
+  const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    function getData(isSuccess = true){
+    function getItem(isSuccess = true){
       return new Promise((resolve, reject) => {
         setTimeout(
           () => {
@@ -24,7 +24,7 @@ const ItemList = () => {
     }
     
     useEffect(() => {
-      getData()
+      getItem()
         .then(retorno => {
           setData(retorno);
           setIsLoading(false);
@@ -36,19 +36,19 @@ const ItemList = () => {
     if(isLoading){
       return <Spinner />
     }
-    
-    return (
-    <div className='flex items-center justify-between grid grid-cols-2 space-x-4 px-2 md:grid-cols-3 lg:grid-cols-4 md:px-10'>
+  
+  return (
+    <div>
       {produtos.map(produtos => (
-        <Items
+        <ItemDetail
           key={produtos.key}
           image={produtos.image} 
           title={produtos.title}
           price={produtos.price}
         />  
-      ))}          
+      ))}   
     </div>
   )
 }
 
-export default ItemList;
+export default ItemDetailContainer

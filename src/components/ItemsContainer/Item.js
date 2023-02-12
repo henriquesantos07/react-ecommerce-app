@@ -1,10 +1,11 @@
 import React from 'react';
-import camisaBranca from '../assets/camisaBranca.png';
+import { Link } from 'react-router-dom'
+import camisaBranca from '../../assets/camisaBranca.png';
 
 const Items = (props) => {
   return (
     <div className='flex justify-center'>
-        <div key={props.id} className='p-0 bg-white mt-10'>
+        <Link to={props.link}><div key={props.id} className='p-0 bg-white mt-10'>
           {/* Image */}
           <div>
             <img src={camisaBranca} alt='logo' className='h-60 rounded-xl'/>
@@ -17,7 +18,7 @@ const Items = (props) => {
           <div>
             <p className='font-thin text-xs ml-1 mt-2'>{`A partir de R$ ${props.price}`}</p>
           </div>
-        </div>
+        </div></Link>
     </div>
   )
 }

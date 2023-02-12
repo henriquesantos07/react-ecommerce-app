@@ -1,8 +1,11 @@
 import React from 'react'
+import ItemList from '../components/ItemsContainer/ItemList'
 
 const Masculino = () => {
   return (
-    <div>Masculino</div>
+    <div>
+      <ItemList />
+    </div>
   )
 }
 

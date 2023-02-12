@@ -1,5 +1,5 @@
 import React from 'react';
-import camisaBranca from '../assets/camisaBranca.png';
+import camisaBranca from '../../assets/camisaBranca.png';
 
 const ItemDetailContainer = (props) => {
   return (
