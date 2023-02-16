@@ -41,7 +41,8 @@ const ItemList = () => {
     <div className='flex items-center justify-between grid grid-cols-2 space-x-4 px-2 md:grid-cols-3 lg:grid-cols-4 md:px-10'>
       {produtos.map(produtos => (
         <Items
-          key={produtos.key}
+          key={produtos.id}
+          link={produtos.link}
           image={produtos.image} 
           title={produtos.title}
           price={produtos.price}

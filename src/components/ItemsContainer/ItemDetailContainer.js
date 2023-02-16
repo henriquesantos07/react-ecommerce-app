@@ -3,8 +3,10 @@ import ItemDetail from './ItemDetail'
 import produtos from './Produtos'
 import { Link } from 'react-router-dom'
 import Spinner from '../Spinner'
+import { useLocation, useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
+
   
   const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -33,22 +35,23 @@ const ItemDetailContainer = () => {
         )
     }, [])
 
+    const location = useLocation();
+
+    console.log(location)
+    const {productId} = useParams();
+
+    const params = useParams();
+    console.log(params)
+
     if(isLoading){
       return <Spinner />
     }
+    
+
+    const produto = produtos.find(p => p.name === productId)
+    console.log(productId)
+  return <ItemDetail produto={produto} />
   
-  return (
-    <div>
-      {produtos.map(produtos => (
-        <ItemDetail
-          key={produtos.key}
-          image={produtos.image} 
-          title={produtos.title}
-          price={produtos.price}
-        />  
-      ))}   
-    </div>
-  )
 }
 
 export default ItemDetailContainer

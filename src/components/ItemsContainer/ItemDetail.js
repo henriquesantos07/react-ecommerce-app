@@ -1,7 +1,9 @@
 import React from 'react';
 import camisaBranca from '../../assets/camisaBranca.png';
 
-const ItemDetailContainer = (props) => {
+
+const ItemDetail = (props) => {
+  
   return (
     <div className='flex items-center justify-center'>
         <div className='flex flex-col md:flex-row'>
@@ -19,4 +21,4 @@ const ItemDetailContainer = (props) => {
   )
 }
 
-export default ItemDetailContainer
+export default ItemDetail

@@ -1,10 +1,9 @@
 import NavBar from "./components/Navbar/NavBar";
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Promocao from "./pages/Promocao"
-import Homem from "./pages/Homem";
 import ItemDetailContainer from "./components/ItemsContainer/ItemDetailContainer";
 import Home from "./pages/Home";
+import ItemListContainer from "./components/ItemsContainer/ItemListContainer";
+import CartContext from "./contexto/cartContext";
 
 
 
@@ -13,14 +12,18 @@ function App() {
  return (
   <>
     <BrowserRouter>
-      <div className="App">
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/homem" element={<Homem />} />
-          <Route exact path="/homem/:id" element={<ItemDetailContainer />} />
-        </Routes>
-      </div>
+      <CartContext.Provider value={[]}>
+        <div className="App">
+          
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/homem" element={<ItemListContainer />} />
+            <Route exact path="/produtos/:productId" element={<ItemDetailContainer />} />
+          </Routes>
+          
+          </div>
+      </CartContext.Provider>
     </BrowserRouter>
   </>
  );
