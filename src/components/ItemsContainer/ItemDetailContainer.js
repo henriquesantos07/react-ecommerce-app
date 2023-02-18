@@ -50,7 +50,11 @@ const ItemDetailContainer = () => {
 
     const produto = produtos.find(p => p.name === productId)
     console.log(productId)
-  return <ItemDetail produto={produto} />
+  return <ItemDetail produto={produto} 
+            key={produto.id}
+            title={produto.title}
+            price={produto.price}
+          />
   
 }
 
