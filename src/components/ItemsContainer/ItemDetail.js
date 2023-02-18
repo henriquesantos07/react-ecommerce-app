@@ -1,8 +1,16 @@
 import React from 'react';
 import camisaBranca from '../../assets/camisaBranca.png';
+import ItemCount from './ItemCount'
 
 
 const ItemDetail = (props) => {
+  
+  function addCart(quantity) {
+    if(quantity > 0){
+        console.log(`Estou adicionando ${quantity} do item`)
+    }
+  }
+  
   
   return (
     <div className='flex items-center justify-center'>
@@ -14,7 +22,7 @@ const ItemDetail = (props) => {
                 <h1 className='text-2xl font-bold'>{props.title}</h1>
                 <p>R$ {props.price}</p>
                 <p>Com tecnologia Insider, a Tech T-shirt é nossa releitura tech da camiseta básica masculina. Feita com fibras macias que se adaptam ao corpo, acompanha seus movimentos e não esquenta. Essa t-shirt não precisa ser passada e não desbota com o tempo, é um item tecnologicamente essencial para uma rotina confortável.</p>
-                <button className='bg-black text-white'>Adicionar ao Carrinho</button>    
+                <ItemCount onConfirm={addCart} stock='5'/>  
             </div>
         </div>    
     </div>
