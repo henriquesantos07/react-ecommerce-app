@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ItemDetail from './ItemDetail'
-import produtos from './Produtos'
-import { Link } from 'react-router-dom'
+import produtos from '../../Produtos/Produtos'
 import Spinner from '../Spinner'
 import { useLocation, useParams } from 'react-router-dom'
 
@@ -9,7 +8,7 @@ const ItemDetailContainer = () => {
 
   
   const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
     function getItem(isSuccess = true){
       return new Promise((resolve, reject) => {
@@ -20,7 +19,7 @@ const ItemDetailContainer = () => {
             }
             reject('Problemas no BD')
 
-          }, 2000
+          }, 100
         )
       })
     }
@@ -36,7 +35,6 @@ const ItemDetailContainer = () => {
     }, [])
 
     const location = useLocation();
-
     console.log(location)
     const {productId} = useParams();
 
@@ -50,10 +48,15 @@ const ItemDetailContainer = () => {
 
     const produto = produtos.find(p => p.name === productId)
     console.log(productId)
-  return <ItemDetail produto={produto} 
+
+  return <ItemDetail 
+            produto={produto} 
             key={produto.id}
+            image={produto.image}
             title={produto.title}
             price={produto.price}
+            salePrice={produto.salePrice}
+            stock={produto.stock}
           />
   
 }

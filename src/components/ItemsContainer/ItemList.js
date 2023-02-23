@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Items from './Item';
-import produtos from './Produtos';
 import Spinner from '../Spinner';
+import produtos from '../../Produtos/Produtos';
 
 
 const ItemList = () => {
@@ -39,15 +39,19 @@ const ItemList = () => {
     
     return (
     <div className='flex items-center justify-between grid grid-cols-2 space-x-4 px-2 md:grid-cols-3 lg:grid-cols-4 md:px-10'>
-      {produtos.map(produtos => (
-        <Items
-          key={produtos.id}
-          link={produtos.link}
-          image={produtos.image} 
-          title={produtos.title}
-          price={produtos.price}
-        />  
-      ))}          
+      {
+        produtos.map(p => (
+          <Items 
+            key={p.key}
+            image={p.image}
+            title={p.title}
+            price={p.price}
+            isSale={p.isSale}
+            salePrice={p.salePrice}
+            link={p.link}
+          />
+      ))}
+                 
     </div>
   )
 }
