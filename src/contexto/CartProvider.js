@@ -7,9 +7,6 @@ function CartProvider({children}){
   const [cartItems, setCartItems] = useState([]);
 
   function addToCart(item){
-    if(cartItems.includes(item)){
-      return
-    }
     setCartItems(oldCart => [...oldCart, item])
   }
 
@@ -17,8 +14,12 @@ function CartProvider({children}){
     setCartItems(oldCart => oldCart.filter((p) => p !== item));  
   }
 
+  function clearCart(){
+    setCartItems([])
+  }
+
   const cartQuantity = cartItems.reduce((currentVal, prevVal) => {
-    return prevVal + currentVal.price
+    return prevVal + currentVal.qtd
   }, 0)
 
 
@@ -27,6 +28,7 @@ function CartProvider({children}){
         cartItems, 
         addToCart, 
         removeFromCart,
+        clearCart,
         cartQuantity 
         
       }}>

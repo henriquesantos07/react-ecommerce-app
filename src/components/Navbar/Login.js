@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useCart } from '../../contexto/CartProvider';
 
 export const Login = () => {
-  const {cartQuantity} = useCart();
+  const {cartQuantity } = useCart();
   return (
     <div className='flex gap-x-5 '>
         <CgEnter className='h-10 w-6'/>

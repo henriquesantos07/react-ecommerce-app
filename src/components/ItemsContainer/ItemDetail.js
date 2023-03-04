@@ -6,7 +6,7 @@ import { useCart } from '../../contexto/CartProvider';
 
 const ItemDetail = ({title, price, image, isSale, stock, salePrice }) => {
   
-  const {addToCart} = useCart()
+  const { addToCart } = useCart()
   
 
   function handleAdd(count){
