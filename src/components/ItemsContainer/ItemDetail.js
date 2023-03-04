@@ -3,23 +3,16 @@ import ItemCount from './ItemCount'
 import { useCart } from '../../contexto/CartProvider';
 
 
-const ItemDetail = ({image, title, price, stock, isSale, salePrice, onAdd}) => {
+
+const ItemDetail = ({title, price, image, isSale, stock, salePrice }) => {
   
   const {addToCart} = useCart()
   
-  ///function addCart(quantity) {
-    ///if(quantity > 0){
-      //  console.log(`Estou adicionando ${quantity} do item`)
-   // }
-  //}
 
-  function handleAdd(valor){
-    console.log("Adicionar ao carrinho")
-    addToCart(title)
+  function handleAdd(count){
+    addToCart({product: title, qtd: count, productTitle: title, price: price})
   }
 
-
-  
   
   return (
     <div className='flex items-center justify-center'>
@@ -41,7 +34,7 @@ const ItemDetail = ({image, title, price, stock, isSale, salePrice, onAdd}) => {
                 
                 </p>
                 <p>Com tecnologia Insider, a Tech T-shirt é nossa releitura tech da camiseta básica masculina. Feita com fibras macias que se adaptam ao corpo, acompanha seus movimentos e não esquenta. Essa t-shirt não precisa ser passada e não desbota com o tempo, é um item tecnologicamente essencial para uma rotina confortável.</p>
-                <ItemCount onAdd={() => handleAdd(title)} stock={stock} initial={1}/>  
+                <ItemCount onAdd={handleAdd} stock={stock} initial={1}/>  
             </div>
         </div>    
     </div>

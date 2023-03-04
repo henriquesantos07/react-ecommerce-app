@@ -9,9 +9,10 @@ export const Login = () => {
   const {cartQuantity} = useCart();
   return (
     <div className='flex gap-x-5 '>
-        <a href='/register'><CgEnter className='h-10 w-6'/></a>
-        <a href='/user'><FaUserAlt className='h-10 w-5'/></a>
-        <Link to='/carrinho'>{cartQuantity}<BsFillCartFill className='h-10 w-6' /></Link>   
+        <CgEnter className='h-10 w-6'/>
+        <Link to='/login'><FaUserAlt className='h-10 w-5'/></Link>
+        {cartQuantity > 0 ? <p>{cartQuantity}</p> : null}
+       {cartQuantity > 0 ? <Link to='/carrinho'><BsFillCartFill className='h-10 w-6' /></Link> : null }
     </div>
   )
 }
