@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import { useCart } from "../../contexto/CartProvider"
 import { CiCircleRemove } from 'react-icons/ci';

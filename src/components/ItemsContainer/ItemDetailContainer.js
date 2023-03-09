@@ -5,8 +5,6 @@ import Spinner from '../Spinner'
 import { useLocation, useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
-
-  
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -36,7 +34,7 @@ const ItemDetailContainer = () => {
 
     const location = useLocation();
     console.log(location)
-    const {productId} = useParams();
+    const {id} = useParams();
 
     const params = useParams();
     console.log(params)
@@ -46,8 +44,8 @@ const ItemDetailContainer = () => {
     }
     
 
-    const produto = produtos.find(p => p.name === productId)
-    console.log(productId)
+    const produto = produtos.find(p => p.id === id)
+    console.log(id)
 
   return <ItemDetail 
             produto={produto} 

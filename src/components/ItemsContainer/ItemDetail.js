@@ -1,12 +1,27 @@
-import React, {useContext} from 'react';
-import ItemCount from './ItemCount'
+import React, {useContext, useEffect} from 'react';
+import ItemCount from './ItemCount';
 import { useCart } from '../../contexto/CartProvider';
+import { useParams } from 'react-router-dom';
+import { getDoc, doc, getFirestore } from 'firebase/firestore';
 
 
 
 const ItemDetail = ({title, price, image, isSale, stock, salePrice }) => {
-  
+  let params = useParams()
   const { addToCart } = useCart()
+
+  useEffect(() => {
+    getDoc(doc(getFirestore(), "items", `${params.id}`))
+      .then((snapshot) => {
+        if(snapshot.exists()) {
+          const item = {
+            id: snapshot.id,
+            ...snapshot.data(),
+          };
+          return item
+        }
+      })
+  })
   
 
   function handleAdd(count){

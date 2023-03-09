@@ -22,6 +22,12 @@ function CartProvider({children}){
     return prevVal + currentVal.qtd
   }, 0)
 
+  function generateOrder(){
+    return {
+      
+    }
+  }
+
 
   return (
     <CartContext.Provider value ={{
