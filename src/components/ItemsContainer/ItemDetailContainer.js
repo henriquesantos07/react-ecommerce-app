@@ -44,7 +44,7 @@ const ItemDetailContainer = () => {
     }
     
 
-    const produto = produtos.find(p => p.id === id)
+    const produto = produtos.find(p => p.name === id)
     console.log(id)
 
   return <ItemDetail 
